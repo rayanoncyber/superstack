@@ -1,21 +1,49 @@
 import React from "react"
 import { Link } from "gatsby"
+import styled from 'styled-components';
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Editor from '../components/Editor';
+import Readme from '../components/Readme';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+class IndexPage extends React.Component {
+  state={
+    loaded: true,
+    files: [],
+    currentFile: false
+  }
+
+  componentDidMount() {
+    fetch('https://api.github.com/repos/deeja/bing-maps-loader/git/trees/master?recursive=1')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+
+      this.setState({
+        loaded: true
+      })
+    })
+  }
+
+  render() {
+    return <Layout>
+      <SEO title="Home" />
+      {!this.state.loaded ? <h1> Loading </h1> : 
+        <Grid>
+          <Readme style={{flex: 2}}>
+
+          </Readme>
+          <Editor style={{flex: 3}} />
+        </Grid>
+      }
+    </Layout>
+  }
+}
+
+const Grid = styled.div`
+  display: flex;
+  width: 100%;
+`
 
 export default IndexPage

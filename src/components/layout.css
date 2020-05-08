@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'RobotoMono';
+  src: local("RobotoMono"), url("../assets/RobotoMono-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local("Roboto"), url("../assets/Roboto-Regular.ttf");
+}
+
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

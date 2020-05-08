@@ -1,0 +1,18 @@
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+    background: #0d0d0d;
+}
+
+.line-numbers .line-numbers-rows {
+	border-right: none !important;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    word-wrap: pre-wrap;
+    white-space: pre-wrap;
+    padding-right: 20px;
+}
+
+pre[class*="language-"] {
+    max-height: 85vh;
+}
